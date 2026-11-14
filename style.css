@@ -60,7 +60,6 @@ a { color: var(--accent); }
   position: absolute; right: 0; bottom: 0;
   height: 100%; width: 55%;
   object-fit: cover; object-position: center top;
-  /* memudarkan sisi kiri foto agar menyatu dengan latar putih */
   -webkit-mask-image: linear-gradient(to right, transparent, #000 35%);
           mask-image: linear-gradient(to right, transparent, #000 35%);
 }
@@ -73,7 +72,85 @@ a { color: var(--accent); }
 
 a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
-/* Mobile */
+/* Social Section & Cards */
+.social-section {
+  padding: 80px 50px;
+  border-top: 1px solid #e6e8ee;
+}
+
+.social-preview-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 24px;
+  max-width: 1100px;
+}
+
+.preview-card {
+  width: calc(33.333% - 16px);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  border: 1px solid #e6e8ee;
+  border-radius: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.preview-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--text);
+  box-shadow: 5px 5px 0px var(--text);
+}
+
+.preview-image {
+  width: 100%;
+  height: 165px;
+  object-fit: cover;
+  display: block;
+  background-color: var(--side);
+  border-bottom: 1px solid #e6e8ee;
+}
+
+.preview-content {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-platform {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.preview-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.preview-desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 1050px) {
+  .preview-card {
+    width: calc(50% - 12px);
+  }
+}
+
 @media (max-width: 800px) {
   .sidebar { position: static; width: 100%; padding: 32px 20px; }
   .menu { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px 18px; margin-top: 24px; }
@@ -86,87 +163,11 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-
     -webkit-mask-image: none; mask-image: none;
   }
   .block { padding: 60px 24px; }
+  .social-section { padding: 60px 24px; }
 }
 
-  .social-preview-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    max-width: 1140px;
-    margin: 40px auto;
-    padding: 0 20px;
-    font-family: inherit; /* Otomatis mengikuti font asli websitemu */
-  }
-
+@media (max-width: 560px) {
   .preview-card {
-    width: calc(33.333% - 16px);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff; /* Latar putih menyatu dengan background web */
-    border: 1px solid #d4d4d8; /* Garis tepi abu-abu halus */
-    border-radius: 0px; /* Sudut tajam/siku mengikuti tombol VIEW PORTFOLIO */
-    overflow: hidden;
-    text-decoration: none;
-    color: #18181b;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  /* Efek hover: border menjadi hitam tegas & bayangan tajam */
-  .preview-card:hover {
-    transform: translateY(-4px);
-    border-color: #18181b;
-    box-shadow: 6px 6px 0px #18181b; /* Bayangan editorial monokrom */
-  }
-
-  @media (max-width: 900px) {
-    .preview-card {
-      width: calc(50% - 12px);
-    }
-  }
-
-  @media (max-width: 640px) {
-    .preview-card {
-      width: 100%;
-    }
-  }
-
-  .preview-image {
     width: 100%;
-    height: 175px;
-    object-fit: cover;
-    display: block;
-    background-color: #f4f4f5; /* Abu-abu terang jika gambar belum dimuat */
-    border-bottom: 1px solid #e4e4e7; /* Garis pemisah tipis antara gambar & teks */
   }
-
-  .preview-content {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .preview-platform {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px; /* Spasi huruf lebar seperti tombol VIEW PORTFOLIO */
-    color: #71717a; /* Abu-abu elegan agar tetap monokrom */
-    margin-bottom: 8px;
-  }
-
-  .preview-title {
-    font-size: 17px;
-    font-weight: 600;
-    margin: 0 0 8px 0;
-    color: #18181b;
-  }
-
-  .preview-desc {
-    font-size: 13.5px;
-    color: #52525b;
-    margin: 0;
-    line-height: 1.6;
-  }
+}
