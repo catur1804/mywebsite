@@ -87,48 +87,97 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-
   }
   .block { padding: 60px 24px; }
 }
+  .social-preview-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Membuat 2 kartu di baris bawah otomatis rata tengah */
+    gap: 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 16px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+
   .preview-card {
-    display: block;
-    width: 100%;
-    max-width: 380px;
-    border: 1px solid #e0e0e0;
+    /* Rumus agar pas 3 kartu per baris (dikurangi jarak gap 24px) */
+    width: calc(33.333% - 16px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #18181b;
+    border: 1px solid #27272a;
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
-    color: #1a1a1a;
-    font-family: system-ui, -apple-system, sans-serif;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #f4f4f5;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
+
+  /* Di layar tablet (maksimal 900px): jadi 2 kartu per baris */
+  @media (max-width: 900px) {
+    .preview-card {
+      width: calc(50% - 12px);
+    }
+  }
+
+  /* Di layar HP (maksimal 640px): menumpuk 1 kolom penuh ke bawah */
+  @media (max-width: 640px) {
+    .preview-card {
+      width: 100%;
+    }
+  }
+
   .preview-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
   }
+
+  /* Efek border hover sesuai warna brand masing-masing */
+  .card-artstation:hover { border-color: #00a8ff; }
+  .card-github:hover { border-color: #a1a1aa; }
+  .card-linkedin:hover { border-color: #0a66c2; }
+  .card-youtube:hover { border-color: #ff0000; }
+  .card-instagram:hover { border-color: #e1306c; }
+
   .preview-image {
     width: 100%;
-    height: 200px;
+    height: 175px;
     object-fit: cover;
     display: block;
-    background-color: #131313;
+    background-color: #09090b;
   }
+
   .preview-content {
-    padding: 16px;
+    padding: 18px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
   }
-  .preview-domain {
-    font-size: 12px;
-    color: #00a8ff;
-    font-weight: 600;
+
+  .preview-platform {
+    font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
   }
+
+  .card-artstation .preview-platform { color: #00a8ff; }
+  .card-github .preview-platform { color: #e4e4e7; }
+  .card-linkedin .preview-platform { color: #38bdf8; }
+  .card-youtube .preview-platform { color: #ff4444; }
+  .card-instagram .preview-platform { color: #f43f5e; }
+
   .preview-title {
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 700;
     margin: 0 0 6px 0;
+    color: #ffffff;
   }
+
   .preview-desc {
-    font-size: 14px;
-    color: #555;
+    font-size: 13.5px;
+    color: #a1a1aa;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.5;
   }
