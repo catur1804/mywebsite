@@ -87,68 +87,62 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-
   }
   .block { padding: 60px 24px; }
 }
+
   .social-preview-grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Membuat 2 kartu di baris bawah otomatis rata tengah */
+    justify-content: center;
     gap: 24px;
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 0 16px;
-    font-family: system-ui, -apple-system, sans-serif;
+    max-width: 1140px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: inherit; /* Otomatis mengikuti font asli websitemu */
   }
 
   .preview-card {
-    /* Rumus agar pas 3 kartu per baris (dikurangi jarak gap 24px) */
     width: calc(33.333% - 16px);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    background-color: #18181b;
-    border: 1px solid #27272a;
-    border-radius: 12px;
+    background-color: #ffffff; /* Latar putih menyatu dengan background web */
+    border: 1px solid #d4d4d8; /* Garis tepi abu-abu halus */
+    border-radius: 0px; /* Sudut tajam/siku mengikuti tombol VIEW PORTFOLIO */
     overflow: hidden;
     text-decoration: none;
-    color: #f4f4f5;
+    color: #18181b;
     transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
 
-  /* Di layar tablet (maksimal 900px): jadi 2 kartu per baris */
+  /* Efek hover: border menjadi hitam tegas & bayangan tajam */
+  .preview-card:hover {
+    transform: translateY(-4px);
+    border-color: #18181b;
+    box-shadow: 6px 6px 0px #18181b; /* Bayangan editorial monokrom */
+  }
+
   @media (max-width: 900px) {
     .preview-card {
       width: calc(50% - 12px);
     }
   }
 
-  /* Di layar HP (maksimal 640px): menumpuk 1 kolom penuh ke bawah */
   @media (max-width: 640px) {
     .preview-card {
       width: 100%;
     }
   }
 
-  .preview-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-  }
-
-  /* Efek border hover sesuai warna brand masing-masing */
-  .card-artstation:hover { border-color: #00a8ff; }
-  .card-github:hover { border-color: #a1a1aa; }
-  .card-linkedin:hover { border-color: #0a66c2; }
-  .card-youtube:hover { border-color: #ff0000; }
-  .card-instagram:hover { border-color: #e1306c; }
-
   .preview-image {
     width: 100%;
     height: 175px;
     object-fit: cover;
     display: block;
-    background-color: #09090b;
+    background-color: #f4f4f5; /* Abu-abu terang jika gambar belum dimuat */
+    border-bottom: 1px solid #e4e4e7; /* Garis pemisah tipis antara gambar & teks */
   }
 
   .preview-content {
-    padding: 18px;
+    padding: 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -156,28 +150,23 @@ a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-
 
   .preview-platform {
     font-size: 11px;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 6px;
+    letter-spacing: 1.5px; /* Spasi huruf lebar seperti tombol VIEW PORTFOLIO */
+    color: #71717a; /* Abu-abu elegan agar tetap monokrom */
+    margin-bottom: 8px;
   }
-
-  .card-artstation .preview-platform { color: #00a8ff; }
-  .card-github .preview-platform { color: #e4e4e7; }
-  .card-linkedin .preview-platform { color: #38bdf8; }
-  .card-youtube .preview-platform { color: #ff4444; }
-  .card-instagram .preview-platform { color: #f43f5e; }
 
   .preview-title {
     font-size: 17px;
-    font-weight: 700;
-    margin: 0 0 6px 0;
-    color: #ffffff;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    color: #18181b;
   }
 
   .preview-desc {
     font-size: 13.5px;
-    color: #a1a1aa;
+    color: #52525b;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.6;
   }
